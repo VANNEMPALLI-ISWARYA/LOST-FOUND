@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+.home-bg {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: 
+      linear-gradient(rgba(30,30,40,0.85), rgba(30,30,40,0.90)), /* dark overlay */
+      url("https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1350&q=80") no-repeat center center / cover;
+    border-radius: 36px;
+    box-shadow: 0 0 48px #23242b80;
+    padding: 32px 0;
+    position: relative;
+}
+@media (max-width: 768px) {
+    .home-bg { border-radius: 18px; padding: 12px 0; }
+    .display-4 { font-size: 2.2rem; }
+}
+</style>
+
+<div class="home-bg mb-4">
+  <div class="position-relative z-2 w-100 px-3 px-md-5">
+    <h1 class="display-4 fw-bold text-info text-center mb-3">
+      <i class="bi bi-lightbulb"></i> Project Inspiration
+    </h1>
+    <p class="lead text-center mb-4 text-light">
+      <b>Colleges are the place where we come to home mentioning about losing our new earphone<br> which might have kept in a desk but not sure if it's still there.<br> This problem feels so relatable to most of the college students.<br> A problem will still remain the same until someone builds a solution to it.<b>
+    </p>
+    <h2 class="mb-4 text-warning text-center">Features</h2>
+    <ul class="list-group list-group-flush mb-4 col-md-8 mx-auto">
+
+        
+       
+        <small class="text-secondary"><em></em></small>
+      </li>
+      <li class="list-group-item bg-dark text-light">
+        <i class="bi bi-shield-lock-fill text-success"></i>
+        <b>Response Validation</b><br>
+        
+      </li>
+      <li class="list-group-item bg-dark text-light">
+        <i class="bi bi-journal-text text-primary"></i>
+        <b>Track your items and responses</b><br>
+        
+      </li>
+      <li class="list-group-item bg-dark text-light">
+        <i class="bi bi-check-circle-fill text-success"></i>
+        <b>Mark items as resolved</b><br>
+        
+      </li>
+      <li class="list-group-item bg-dark text-light">
+        <i class="bi bi-emoji-smile text-warning"></i>
+        <b>Simple and accessible experience</b><br>
+       
+      </li>
+    </ul>
+    <div class="d-flex justify-content-center mt-3">
+      {% if not session.get('user_id') %}
+      <a href="{{ url_for('register') }}" class="btn btn-lg btn-info me-3"><i class="bi bi-box-arrow-in-right"></i> Get Started</a>
+      <a href="{{ url_for('login') }}" class="btn btn-lg btn-outline-light"><i class="bi bi-person"></i> Login</a>
+      {% else %}
+      <a href="{{ url_for('dashboard') }}" class="btn btn-lg btn-success"><i class="bi bi-grid"></i> Go to Dashboard</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Search Results for "{{ q }}"</h2>
+{% if items %}
+<div class="row g-3">
+{% for item in items %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title d-flex align-items-center">
+                  <i class="bi bi-{{ 'exclamation-circle' if item.status == 'lost' else 'check2-circle' }} me-2"></i>
+                  {{ item.title }}
+                  <span class="badge bg-secondary ms-2">{{ item.status.capitalize() }}</span>
+                </h5>
+                <p class="card-text text-truncate">{{ item.description }}</p>
+                <p class="card-text"><small><i class="bi bi-person-fill"></i> {{ item.username }}</small></p>
+                <a class="btn btn-outline-info btn-sm" href="{{ url_for('item_detail', item_id=item.id) }}">
+                  <i class="bi bi-eye"></i> View Details
+                </a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% else %}
+<p class="text-muted">No results found.</p>
+{% endif %}
+{% endblock %}

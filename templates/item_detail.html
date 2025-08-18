@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">{{ item.title }} <span class="badge bg-secondary">{{ item.status.capitalize() }}</span></h2>
+<p>{{ item.description }}</p>
+<p><small><i class="bi bi-person-fill"></i> Owner: {{ item.username }}</small></p>
+
+<hr>
+
+<h4>Responses</h4>
+{% if responses %}
+<ul class="list-group list-group-dark mb-4">
+  {% for r in responses %}
+    <li class="list-group-item"><strong>{{ r.username }}:</strong> {{ r.message }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No responses yet.</p>
+{% endif %}
+
+{% if session.get('user_id') %}
+<h5>Leave a Response:</h5>
+<form method="POST" class="mb-4" style="max-width:500px;">
+    <textarea name="message" class="form-control mb-2" rows="3" placeholder="Your message..." required></textarea>
+    <button type="submit" class="btn btn-outline-primary">Send Response</button>
+</form>
+{% else %}
+<p><a href="{{ url_for('login') }}">Log in</a> to leave a response.</p>
+{% endif %}
+{% endblock %}

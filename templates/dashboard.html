@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4 text-center"><i class="bi bi-speedometer2 me-2"></i>Dashboard - Lost & Found Items</h2>
+
+{% if items %}
+<table class="table table-hover table-dark table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Created At</th>
+            <th>Owner</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>
+                {% if item.image %}
+                    <img src="{{ url_for('static', filename='images/' ~ item.image) }}" alt="Item Image" style="max-width: 80px; max-height: 80px; object-fit: cover; border-radius: 6px;">
+                {% else %}
+                    <span class="text-muted">No image</span>
+                {% endif %}
+            </td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.status|capitalize }}</td>
+            <td>{{ item.created_at }}</td>
+            <td>{{ item.username }}</td>
+            <td>
+                <a href="{{ url_for('item_detail', item_id=item.id) }}" class="btn btn-sm btn-outline-info">View</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No lost or found items available. <a href="{{ url_for('add_item') }}">Add one now</a>.</p>
+{% endif %}
+
+{% endblock %}
