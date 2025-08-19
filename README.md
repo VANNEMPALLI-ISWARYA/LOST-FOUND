@@ -32,7 +32,7 @@
 git clone https://github.com/your-username/lost-found-portal.git  
 
 # 2. Navigate into the project folder
-cd lost-found-portal  
+cd lost-found 
 
 # 3. Install dependencies
 pip install -r requirements.txt  
@@ -43,17 +43,5 @@ python app.py
 
 ➡️ Open browser: http://127.0.0.1:5000/
 
-<h2>🌐 DEPLOYMENT</h2> This project is <b>deployed on Render</b>. 🔗 [Live Demo](https://your-render-link.com)
-<h2>🤝 CONTRIBUTING</h2>
 
-🍴 Fork the repo
-
-🔧 Create a new branch
-
-💡 Make your changes
-
-📩 Submit a pull request
-
-<h2>📜 LICENSE</h2> This project is licensed under the <b>MIT License</b>.
-
-✨ <i>A small step towards helping students reunite with their belongings!</i
+✨ <i>A small step towards helping students reunite with their belongings!</i>
